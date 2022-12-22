@@ -16,12 +16,19 @@ while command != 'exit':
             print(len(key_list))
         case 'add': # add: додати запис
             name = input("Enter a name: ")
-            phonenumber = input("Enter a phone number: ")
-            phonebook[name] = phonenumber
+            if name in phonebook:
+                print("Contact with this name already exists.")
+            else:
+                phonenumber = input("Enter a phone number: ")
+                phonebook[name] = phonenumber
             print(phonebook)
         case 'delete': # delete <name>: видалити запис за іменем (ключем)
             name = input("Enter a name: ")
-            del phonebook[name]
+            if name in phonebook:
+                del phonebook[name]
+                print(f"Contact '{name}' is deleted.")
+            else:
+                print(f"Contact '{name}' is not found.")
             print(phonebook)
         case 'list': # list: список всіх імен в книзі
             key_list = phonebook.keys()
