@@ -10,8 +10,12 @@ phonebook = {
 
 json_phonebook = json.dumps(phonebook)
 
-with open("phonebook.json", 'w') as f:   # 'w' mode acts same way as 'x' mode - it creates a file if it doesn't exist
-    f.write(json_phonebook)
+try:
+    with open("phonebook.json", 'x') as f:
+        f.write(json_phonebook)
+except FileExistsError:
+    print('File "phonebook.json" already exists')
+
 # ============================================================
 # Завантажуємо дані з існуючого json-файлу для роботи з ними:
 with open("phonebook.json", 'r') as f:
