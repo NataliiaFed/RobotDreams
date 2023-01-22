@@ -4,10 +4,8 @@ now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
 
 class MyCustomException(Exception):
-    pass
-# raise MyCustomException('Custom exception is occured')
+    def __init__(self, message):
+        with open('error_logs.txt', 'a+') as f:  #'a' mode creates a file if it doesn't exist
+            f.write(f'{current_time} {MyCustomException}: Custom exception is occured\n')
 
-try:
-    raise MyCustomException('Test')
-except MyCustomException:
-    print(f'{current_time} {MyCustomException}: Custom exception is occured')
+raise MyCustomException('Custom exception is occured')
