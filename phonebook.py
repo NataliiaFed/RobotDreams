@@ -43,11 +43,7 @@ while command != 'exit':
             else:
                 while True:
                     phonenumber = input("Enter a phone number: ")
-                    if re.fullmatch(r'\+380\d{9}$', phonenumber):
-                        break
-                    elif re.fullmatch(r'380\d{9}(?=$)', phonenumber):
-                        break
-                    elif re.fullmatch(r'0\d{9}\b', phonenumber):
+                    if re.fullmatch(r'(?:\+*38)*0\d{9}$', phonenumber):
                         break
                     else:
                         print("Invalid format of a phone number. Try again.")
