@@ -1,0 +1,15 @@
+import sqlite3
+
+connection = sqlite3.connect('database.sqlite')
+
+cursor = connection.cursor()
+
+query = "SELECT age, COUNT(id) FROM users GROUP BY age"
+res = cursor.execute(query)
+print(res)
+
+data = res.fetchall()
+print(data)
+
+============= in SQLite cosole =================
+SELECT age, COUNT(id) FROM users GROUP BY age;
