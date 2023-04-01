@@ -56,7 +56,7 @@ def get_user_id(user_id):
 @app.route('/books/<book_title>')
 def get_book_title(book_title):
     if book_title.isalpha():
-        modified_title = book_title.upper()[0] + book_title.lower()[1:]
+        modified_title = book_title.capitalize()
         return modified_title, 200
     else:
         return "404 Not Found", 200
@@ -109,7 +109,7 @@ def login():
         elif password_check == None:
             return 'Password must be at least 8 characters long, contain at least one number and one uppercase letter', 400
         else:
-            return redirect('/users'), 200
+            return redirect('/users')
 
 
 @app.errorhandler(werkzeug.exceptions.NotFound)
