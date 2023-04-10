@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/params.css') }}">
+    <title>Params</title>
+</head>
+<body>
+    <div>Hello, {{user}}</div>
+    <table>
+        <tr>
+            <th>parameter</th>
+            <th>|</th>
+            <th>value</th>
+        </tr>
+        {% for key, value in attributes.items() %}
+            <tr>
+                <th>{{key}}</th>
+                <th>|</th>
+                <th>{{value}}</th>
+            </tr>
+        {% endfor %}
+    </table>
+    <form method=POST action='/logout'>
+        <button type='submit'>Log out</button>
+    </form>
+</body>
+</html>

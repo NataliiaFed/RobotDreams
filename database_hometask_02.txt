@@ -1,0 +1,23 @@
+import sqlite3
+
+connection = sqlite3.connect('my_database')
+cursor = connection.cursor()
+
+data = [
+    ('Nataliia', 'Fedorets', 34),
+    ('Yegor', 'Gemba', 34),
+    ('Alyona', 'Kozlova', 38),
+    ('Bogdan', 'Negoda', 27),
+    ('Dima', 'Nagornii', 40)
+]
+
+query1 = "INSERT INTO users (first_name, last_name, age) VALUES (?,?,?)"
+cursor.executemany(query1, data)
+connection.commit()
+
+========= in SQLIte console ===========
+INSERT INTO users (first_name, last_name, age) VALUES ('Nataliia', 'Fedorets', 34)
+INSERT INTO users (first_name, last_name, age) VALUES ('Yegor', 'Gemba', 34)
+INSERT INTO users (first_name, last_name, age) VALUES ('Alyona', 'Kozlova', 38)
+INSERT INTO users (first_name, last_name, age) VALUES ('Bogdan', 'Negoda', 27)
+INSERT INTO users (first_name, last_name, age) VALUES ('Dima', 'Nagornii', 40)

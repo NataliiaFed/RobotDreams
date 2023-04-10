@@ -1,0 +1,21 @@
+import sqlite3
+
+db = sqlite3.connect('bookstore.sqlite')
+
+cursor = db.cursor()
+
+query = """SELECT books.author, sum(books.price) as total_sales, count(purchase.id) as total_purchases
+FROM books
+JOIN purchase
+ON books.id = purchase.book_id
+GROUP BY books.author"""
+
+res = cursor.execute(query)
+print(res.fetchall())
+
+========================= in SQL console ================================
+SELECT books.author, sum(books.price) as total_sales, count(purchase.id) as total_purchases
+FROM books
+JOIN purchase
+ON books.id = purchase.book_id
+GROUP BY books.author

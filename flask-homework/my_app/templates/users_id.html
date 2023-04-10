@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User ID</title>
+</head>
+<body>
+    <div>Hello, {{user}}</div>
+    <div>
+        {% if id % 2 == 0 %}
+            <span>User ID is {{id}}</span>
+        {% else %}
+            <span>404 Not Found</span>
+        {% endif %}
+    </div>
+    <form method=POST action='/logout'>
+        <button type='submit'>Log out</button>
+    </form>
+</body>
+</html>
