@@ -1,0 +1,17 @@
+import sqlite3
+
+db = sqlite3.connect('bookstore.sqlite')
+
+cursor = db.cursor()
+
+query = """SELECT purchase.id, purchase.date, users.first_name, users.last_name
+FROM purchase
+JOIN users on purchase.user_id = users.id"""
+
+res = cursor.execute(query)
+pprint(res.fetchall())
+
+========================= in SQL console ================================
+SELECT purchase.id, purchase.date, users.first_name, users.last_name
+FROM purchase
+JOIN users on purchase.user_id = users.id
