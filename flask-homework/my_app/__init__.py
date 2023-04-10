@@ -14,4 +14,3 @@ dictConfig({
 app.config.from_object(AppConfig)
 
 from .views import *
-from .class_base_views import *
