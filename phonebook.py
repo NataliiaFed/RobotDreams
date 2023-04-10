@@ -47,6 +47,7 @@ while command != 'exit':
                         break
                     else:
                         print("Invalid format of a phone number. Try again.")
+
                 phonebook[name] = phonenumber
 
                 json_phonebook = json.dumps(phonebook)

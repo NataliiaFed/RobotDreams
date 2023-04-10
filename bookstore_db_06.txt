@@ -1,0 +1,21 @@
+import sqlite3
+
+db = sqlite3.connect('bookstore.sqlite')
+
+cursor = db.cursor()
+
+query = """SELECT users.id, users.first_name, users.last_name, SUM(books.price) as total_purchases
+FROM users
+JOIN purchase on users.id = purchase.user_id
+JOIN books on purchase.book_id = books.id
+GROUP BY users.id, users.first_name, users.last_name"""
+
+res = cursor.execute(query)
+pprint(res.fetchall())
+
+========================= in SQL console ================================
+SELECT users.id, users.first_name, users.last_name, SUM(books.price) as total_purchases
+FROM users
+JOIN purchase on users.id = purchase.user_id
+JOIN books on purchase.book_id = books.id
+GROUP BY users.id, users.first_name, users.last_name
