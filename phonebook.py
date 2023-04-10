@@ -1,4 +1,6 @@
 import json
+import re
+
 # ============================================================
 # Переносимо телефонну книгу з python-файлу в новий json-файл:
 phonebook = {
@@ -39,7 +41,13 @@ while command != 'exit':
             if name in phonebook:
                 print("Contact with this name already exists.")
             else:
-                phonenumber = input("Enter a phone number: ")
+                while True:
+                    phonenumber = input("Enter a phone number: ")
+                    if re.fullmatch(r'(?:\+*38)*0\d{9}$', phonenumber):
+                        break
+                    else:
+                        print("Invalid format of a phone number. Try again.")
+
                 phonebook[name] = phonenumber
 
                 json_phonebook = json.dumps(phonebook)
