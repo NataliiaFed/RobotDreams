@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Books</title>
+    <title>Purchase</title>
 </head>
 <body>
     <div>Hello, {{ user_session }}</div>
     <div>
         <ul>
-            {% for book in books %}
-                <li>{{ book.id }}: {{ book.title }} {{ book.author }} {{ book.year }} {{ book.price }}</li>
+            {% for purchase in purchases %}
+                <li>{{ purchase.id }}: {{ purchase.user_id }} {{ purchase.user.first_name }} {{ purchase.user.last_name }} {{ purchase.book_id }} {{ purchase.book.title }} {{ purchase.date }}</li>
             {% endfor %}
         </ul>
     </div>
