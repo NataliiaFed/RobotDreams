@@ -98,25 +98,25 @@ def create_purchase():
         return render_template('newpurchase.html')
 
     elif request.method == 'POST':
-        user_id = int(request.form.get("user_id"))
-        users = User.query.all()
-        user_exists = False
+        user_id = int(request.form.get("user_id")) # entered ID
+        user = User.query.get(user_id)
+        # user_exists = False
 
         book_id = int(request.form.get("book_id"))
-        books = Book.query.all()
-        book_exists = False
+        book = Book.query.get(book_id)
+        # book_exists = False
 
-        for user in users:
-            if user.id == user_id:
-                user_exists = True
-                break
+        # for user in users:
+        #     if user.id == user_id:
+        #         user_exists = True
+        #         break
+        #
+        # for book in books:
+        #     if book.id == book_id:
+        #         book_exists = True
+        #         break
 
-        for book in books:
-            if book.id == book_id:
-                book_exists = True
-                break
-
-        if user_exists == True and book_exists == True:
+        if user != None and book != None:
             purchase = Purchase(user_id=user_id, book_id=book_id)
             db.session.add(purchase)
             db.session.commit()
