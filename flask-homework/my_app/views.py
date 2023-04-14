@@ -100,21 +100,9 @@ def create_purchase():
     elif request.method == 'POST':
         user_id = int(request.form.get("user_id")) # entered ID
         user = User.query.get(user_id)
-        # user_exists = False
 
         book_id = int(request.form.get("book_id"))
         book = Book.query.get(book_id)
-        # book_exists = False
-
-        # for user in users:
-        #     if user.id == user_id:
-        #         user_exists = True
-        #         break
-        #
-        # for book in books:
-        #     if book.id == book_id:
-        #         book_exists = True
-        #         break
 
         if user != None and book != None:
             purchase = Purchase(user_id=user_id, book_id=book_id)
