@@ -1,7 +1,14 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Purchase
+from .forms import PurchaseForm
 
-def my_view(response):
-    res = Purchase.objects.all().order_by('-date').values()
-    return HttpResponse(res)
+class PurchaseListView(ListView):
+    model = Purchase
+
+class PurchaseDetailView(DetailView):
+    model = Purchase
+
+class PurchaseCreateView(CreateView):
+    model = Purchase
+    form_class = PurchaseForm

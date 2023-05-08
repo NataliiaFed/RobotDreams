@@ -1,7 +1,14 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Book
+from .forms import BookForm
 
-def my_view(response):
-    res = Book.objects.all().values()
-    return HttpResponse(res)
+class BookListView(ListView):
+    model = Book
+
+class BookDetailView(DetailView):
+    model = Book
+
+class BookCreateView(CreateView):
+    model = Book
+    form_class = BookForm
