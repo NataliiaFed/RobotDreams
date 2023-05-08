@@ -12,5 +12,8 @@ class Purchase(models.Model):
     class Meta:
         db_table = 'purchase'
 
+    def __str__(self):
+        return f"{self.id}: {self.user.first_name} {self.user.last_name} - {self.book.title}"
+
     def get_absolute_url(self):
         return reverse('purchase-detail', args=[self.id])
