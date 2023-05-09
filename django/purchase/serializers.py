@@ -6,7 +6,7 @@ from book.serializers import BookSerializer
 
 class PurchaseSerializer(serializers.ModelSerializer):
     user = UserSerializer
-    book = BookSerializer(many=True)
+    book = BookSerializer     # (many=True)
     date = serializers.ReadOnlyField()
 
     class Meta:
