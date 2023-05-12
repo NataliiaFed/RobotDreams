@@ -9,7 +9,7 @@ class PublishingHouseSerializer(serializers.ModelSerializer):
 
 
 class BookSerializer(serializers.ModelSerializer):
-    publish_house = PublishingHouseSerializer
+    publish_house = PublishingHouseSerializer()
 
     class Meta:
         model = Book
