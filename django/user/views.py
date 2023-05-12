@@ -1,7 +1,14 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views.generic import ListView, DetailView, CreateView
 from .models import User
+from .forms import UserForm
 
-def my_view(response):
-    res = User.objects.all().values()
-    return HttpResponse(res)
+class UserListView(ListView):
+    model = User
+
+class UserDetailView(DetailView):
+    model = User
+
+class UserCreateView(CreateView):
+    model = User
+    form_class = UserForm
