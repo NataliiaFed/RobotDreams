@@ -14,6 +14,3 @@ class User(models.Model):
 
     def get_absolute_url(self):
         return reverse('user-detail', args=[self.id])
-
-    def is_adult(self):
-        return True if self.age >= 18 else False
