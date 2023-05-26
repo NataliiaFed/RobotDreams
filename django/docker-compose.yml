@@ -73,9 +73,9 @@ networks:
   nginx_network:
     name: nginx_network
     driver: bridge
-#  database_network:
-#    name: database_network
-#    driver: bridge
+  database_network:
+    name: database_network
+    driver: bridge
 
 volumes:
   postgres_data:
